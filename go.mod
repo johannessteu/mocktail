@@ -1,4 +1,4 @@
-module github.com/traefik/mocktail
+module github.com/johannessteu/mocktail
 
 go 1.19
 
