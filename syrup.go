@@ -618,6 +618,13 @@ func (s Syrup) getNamedTypeName(t *types.Named) string {
 	}
 
 	if t.Obj() != nil && t.Obj().Pkg() != nil {
+		nameParts := strings.Split(name, ".")
+		if len(nameParts) > 1 {
+			if t.Obj().Pkg().Name() != nameParts[0] {
+				return t.Obj().Pkg().Name() + "." + nameParts[1]
+			}
+		}
+
 		if t.Obj().Pkg().Path() == s.PkgPath {
 			i := strings.Index(name, ".")
 			return name[i+1:]
